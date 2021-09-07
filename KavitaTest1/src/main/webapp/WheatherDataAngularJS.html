@@ -1,56 +1,25 @@
 
 <html>
 <head>
-	<script
-			src=""></script>
+	<script type="text/javascript" language="javascript">
 
-	<title>Test</title>
-	<script type="text/javascript">
-            var app = angular.module("WheatherForeCastManagement", []);
+function send()
+{
+   var urlvariable = document.getElementById("myText");
 
-            //Controller Part
-            app.controller("WheatherReportController", function($scope, $http) {
-
-
-                $scope.String = [];
-                $scope.WeatherReport = {
-
-                    Name : "",
-                    outputRetrived : ""
-                };
-
-                $scope.getwheatherreport = function($scope.WeatherReport.Name) {
-
-                    var method = "";
-                    var url = "";
-                    if ($scope.WeatherReport.Name == 1) {
-
-                        method = "POST";
-                        url = '/Test';
-                    }
-
-                    $http({
-                        method : method,
-                        url : url,
-                        data : angular.toJson($scope.WeatherReport),
-                        headers : {
-                            'Content-Type' : 'application/json'
-                        }
-                    }).then( _success, _error );
-                };
+    URL = "http://localhost:8080/test?key=" + urlvariable;  //Your URL
+    const response = await fetch(URL);
+    var data = await response;
+    console.log(data);
+    show(data);
+    document.getElementById("myText1").innerHTML =  response.text()
+}
 
 
-                function _error(response) {
-                    console.log(response.statusText);
-                }
-
-                 function _success(response) {
-                   console.log(response);
-                }
+</script>
 
 
-            });
-        </script>
+
 	<style>
 .blue-button {
 	background: #25A6E1;
@@ -134,15 +103,14 @@ td, th {
 
 		<tr>
 			<td>Letter to sort</td>
-			<td><input type="text" ng-model="WeatherReport.Name" /></td>
+			<td><<input type="text" id="myText1" name="T"></td>
 		</tr>
 		<tr>
 			<td>output retrived</td>
-			<td><input type="text" ng-model= $scope.getwheatherreport /></td>
+			<td><input type="text" id="myText" name="T"><br><br></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="submit" value="Submit"
-								   class="blue-button" /></td>
+			<td colspan="2"><button type="submit" onclick="javascript:send()">call</button></td>
 		</tr>
 	</table>
 </form>
