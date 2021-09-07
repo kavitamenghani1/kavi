@@ -1,0 +1,161 @@
+
+<html>
+<head>
+	<script
+			src=""></script>
+
+	<title>Test</title>
+	<script type="text/javascript">
+            var app = angular.module("WheatherForeCastManagement", []);
+
+            //Controller Part
+            app.controller("WheatherReportController", function($scope, $http) {
+
+
+                $scope.String = [];
+                $scope.WeatherReport = {
+
+                    Name : "",
+                    outputRetrived : ""
+                };
+
+                $scope.getwheatherreport = function($scope.WeatherReport.Name) {
+
+                    var method = "";
+                    var url = "";
+                    if ($scope.WeatherReport.Name == 1) {
+
+                        method = "POST";
+                        url = '/Test';
+                    }
+
+                    $http({
+                        method : method,
+                        url : url,
+                        data : angular.toJson($scope.WeatherReport),
+                        headers : {
+                            'Content-Type' : 'application/json'
+                        }
+                    }).then( _success, _error );
+                };
+
+
+                function _error(response) {
+                    console.log(response.statusText);
+                }
+
+                 function _success(response) {
+                   console.log(response);
+                }
+
+
+            });
+        </script>
+	<style>
+.blue-button {
+	background: #25A6E1;
+	filter: progName: DXImageTransform.Microsoft.gradient( startColorstr='#25A6E1',
+		endColorstr='#188BC0', GradientType=0);
+	padding: 3px 5px;
+	color: #fff;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-size: 12px;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 4px;
+	border: 1px solName #1A87B9
+}
+
+.red-button {
+	background: #CD5C5C;
+	padding: 3px 5px;
+	color: #fff;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-size: 12px;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 4px;
+	border: 1px solName #CD5C5C
+}
+
+table {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	wNameth: 50%;
+}
+
+caption {
+	text-align: left;
+	color: silver;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 5px;
+}
+
+th {
+	background: SteelBlue;
+	color: white;
+}
+
+tbody tr:nth-child(even) {
+	background: WhiteSmoke;
+}
+
+tbody tr td:nth-child(2) {
+	text-align: center;
+}
+
+tbody tr td:nth-child(3), tbody tr td:nth-child(4) {
+	text-align: center;
+	font-family: monospace;
+}
+
+tfoot {
+	background: SeaGreen;
+	color: white;
+	text-align: right;
+}
+
+tfoot tr th:last-child {
+	font-family: monospace;
+}
+
+td, th {
+	border: 1px solName gray;
+	wNameth: 25%;
+	text-align: left;
+	padding: 5px 10px;
+}
+</style>
+	<head>
+<body ng-app="WheatherReportManagement" ng-controller="WheatherReportController">
+<h1>Wheather Report</h1>
+<form ng-submit="getwheatherreport()">
+	<table>
+
+		<tr>
+			<td>Letter to sort</td>
+			<td><input type="text" ng-model="WeatherReport.Name" /></td>
+		</tr>
+		<tr>
+			<td>output retrived</td>
+			<td><input type="text" ng-model= $scope.getwheatherreport /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="Submit"
+								   class="blue-button" /></td>
+		</tr>
+	</table>
+</form>
+<table>
+	<tr>
+
+		<th>Enter word for sorting</th>
+		<th>output retrived</th>
+
+
+	</tr>
+
+
+</table>
+</body>
+</html>

@@ -1,0 +1,13 @@
+eureka:
+  client:
+    enabled: false
+
+spring:
+  application:
+    name: test
+
+info:
+  app:
+    description: Test
+server:
+ port: 8080

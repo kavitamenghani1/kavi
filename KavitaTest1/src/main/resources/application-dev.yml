@@ -1,0 +1,11 @@
+spring:
+  kafka:
+  datasource:
+    url: 
+    username: 
+    driver-class-name:
+    password: 
+    min-idle: 
+    maximum-pool-size: 
+    idle-timeout: 
+    connect-by-username: 

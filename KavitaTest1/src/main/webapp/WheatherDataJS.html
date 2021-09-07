@@ -1,0 +1,27 @@
+<script type="text/javascript" language="javascript">
+
+function send()
+{
+   var urlvariable = document.getElementById("myText");
+
+    URL = "http://localhost:8080/test?key=" + urlvariable;  //Your URL
+    const response = await fetch(URL);
+    var data = await response;
+    console.log(data);
+    show(data);
+    document.getElementById("div").innerHTML = xmlhttp.statusText + ":"response"</textarea>";
+}
+
+function callbackFunction(xmlhttp)
+{
+    //alert(xmlhttp.responseXML);
+}
+</script>
+
+
+<html>
+<body id='bod'><button type="submit" onclick="javascript:send()">call</button>
+<input type="text" id="myText" name="T"><br><br>
+<div id='div'>
+</div></body>
+</html>
